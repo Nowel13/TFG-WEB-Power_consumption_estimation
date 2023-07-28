@@ -1,0 +1,17 @@
+{% extends './base.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+{% if message|length %}
+<h1>{{ message }}</h1>
+{% endif %}
+{% if time|length %}
+<h2>Time used: {{ time }}</h2>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Apply model</button>
+</form>
+{% endblock %}

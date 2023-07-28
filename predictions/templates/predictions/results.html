@@ -1,0 +1,10 @@
+{% extends './base.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+{% if image|length %}
+<h1>{{ image }}</h1>
+{% endif %}
+{% endblock %}

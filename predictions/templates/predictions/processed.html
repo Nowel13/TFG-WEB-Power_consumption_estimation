@@ -1,0 +1,17 @@
+{% extends './base.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+{% if message|length %}
+<h1>{{ message }}</h1>
+{% endif %}
+{% if n_files|length %}
+<h2>Number of processed files: {{ n_files }}</h2>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Process</button>
+</form>
+{% endblock %}

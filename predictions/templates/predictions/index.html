@@ -1,0 +1,20 @@
+{% extends './base.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<div style="display: flex; flex-direction: column; align-items: center;">
+
+    <div style="display: flex; flex-direction: column; margin-bottom: 10px; justify-content: center; align-items: center;">
+        <h3>Welcome!</h3>
+        <p>In this page you can upload your files with consumption data.</p>
+        <p>We will prepare and clean them to prepare data mining and machine learning models.</p>
+        <p>With that models, we can predict the power consumption estimate for the next three days from the last date of your data.</p>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+        <a href="/predictions/uploads">Upload files</a>
+        <a href="{% url 'uploads'%}">Upload files</a>
+    </div>
+</div>
+{% endblock %}
