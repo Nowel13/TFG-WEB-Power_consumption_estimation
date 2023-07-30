@@ -1,17 +1,17 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import loader
-from requests_toolbelt.multipart.encoder import MultipartEncoder
-from .forms import UploadFileForm
-from django.conf import settings
-import requests
 import os
 import csv
+import json
 import time
 import zipfile
+import requests
 import numpy as np
 import pandas as pd
-import json
+from django.conf import settings
+from .forms import UploadFileForm
+from django.template import loader
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from requests_toolbelt.multipart.encoder import MultipartEncoder
 
 
 # Página principal de la web:
