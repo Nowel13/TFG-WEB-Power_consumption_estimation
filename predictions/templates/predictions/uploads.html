@@ -4,10 +4,23 @@ Home
 {% endblock %}
 
 {% block content %}
+
 <h2>UPLOAD FILES</h2>
+
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" name="document" multiple>
-    <button type="submit">Upload File</button>
+    <button type="submit">Upload Files</button>
 </form>
+
+{% if n_files > 0 %}
+    <p> You already uploaded {{ n_files }} distinct files</p>
+{% else %}
+    <p> You didn't uploaded any files</p>
+{% endif %}
+
+{% if time > 0 %}
+    <p>New files uploaded correctly in {{ time }} seconds</p>
+{% endif %}
+
 {% endblock %}

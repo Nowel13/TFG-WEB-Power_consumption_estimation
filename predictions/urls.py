@@ -5,10 +5,10 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("uploads", views.upload_processed_files, name="uploads"),
     path("delete", views.delete, name="delete"),
-    path("uploads", views.uploads, name="uploads"),
     path("processed", views.process_data, name="processed"),
-    path("apply_model", views.apply, name="apply_model"),
+    path("apply_model", views.apply_model, name="apply_model"),
     path("results", views.results, name="results"),
 ]
 

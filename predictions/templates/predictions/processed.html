@@ -4,14 +4,32 @@ Home
 {% endblock %}
 
 {% block content %}
-{% if message|length %}
-<h1>{{ message }}</h1>
+
+<h2>PROCESS FILES</h2>
+
+{% if n_files > 0 %}
+    <p> You can press this button to prepare and clean your {{ n_files }} data files.</p>
+{% else %}
+    <p> You need to upload first some data files</p>
 {% endif %}
-{% if n_files|length %}
-<h2>Number of processed files: {{ n_files }}</h2>
+
+<p>Already uploaded files: {{ n_files }}</p>
+
+{% if n_files > 0 %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="datemax">Enter the date when your data starts to count:</label>
+        <input type="date" name="init_date" required>
+        <br>
+        <label for="quantity">Number of the days to take into account when predict data:</label>
+        <input type="number" name="max_days_before" min="1" max="10" required>
+        <br>
+        <button type="submit">Process files</button>
+    </form>
 {% endif %}
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Process</button>
-</form>
+
+{% if message|length > 0 %}
+    <p>{{ message }}</p>
+{% endif %}
+
 {% endblock %}

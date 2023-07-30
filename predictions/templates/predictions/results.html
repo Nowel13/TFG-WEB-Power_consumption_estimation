@@ -1,10 +1,46 @@
 {% extends './base.html' %}
+{% load static %}
+
 {% block title %}
 Home
 {% endblock %}
 
 {% block content %}
-{% if image|length %}
-<h1>{{ image }}</h1>
+
+<h2>RESULTS</h2>
+
+{% if n_files > 0 %}
+    <div style="padding-bottom: 10px;">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button type="submit">Get or refresh results</button>
+        </form>
+    </div>
+
+    {% if show_results %}
+
+    <div style="display: flex; gap: 30px; align-items: center; justify-content: center;">
+        <table style="border-collapse: collapse;">
+            {% for fila in datos %}
+            <tr>
+                {% for dato in fila %}
+                <td style="padding: 5px; text-align: center; border: 1px solid;">
+                    {{ dato }}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+
+        <img style="width: 700px; height: auto;" src="{% static 'media/data/results/prediction.png' %}">
+    </div>
+
+    {% else %}
+        <p>You don't have results predicted yet.</p>
+    {% endif %}
+{% else %}
+    <p> You didn't uploaded any files yet.</p>
 {% endif %}
+
+
 {% endblock %}

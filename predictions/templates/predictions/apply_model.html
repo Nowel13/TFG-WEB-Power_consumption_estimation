@@ -4,14 +4,48 @@ Home
 {% endblock %}
 
 {% block content %}
-{% if message|length %}
-<h1>{{ message }}</h1>
+
+<h2>APPLY MODEL</h2>
+
+
+{% if n_files > 0 %}
+    <div style="display: flex; justify-content: center;">
+        <form method="post">
+            {% csrf_token %}
+            <div style="display: flex; flex-direction: column; gap: 20px">
+                <div style="display: flex; gap: 10px;">
+                    <label for="model_name">Choose a model:</label>
+                    <select name="model_name" id="model" required>
+                        <option disabled selected value></option>
+                        <option value="ada_boost">Ada Boost</option>
+                        <option value="bagging">Bagging</option>
+                        <option value="extra_trees">Extra Trees</option>
+                        <option value="gradient_boosting">Gradient Boosting</option>
+                        <option value="k_neighbors">K Neighbors</option>
+                        <option value="linear_regression">Linear Regression</option>
+                        <option value="neural_network">Neural Network</option>
+                        <option value="radius_neighbors">Radius Neighbors</option>
+                        <option value="random_forest">Random Forest</option>
+                        <option value="stacking">Stacking</option>
+                        <option value="voting">Voting</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" >Apply model</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% else %}
+    <p> You need to upload and process first some data files</p>
 {% endif %}
-{% if time|length %}
-<h2>Time used: {{ time }}</h2>
+
+{% if selected_model|length %}
+    <p> You used {{ selected_model }} model</p>
 {% endif %}
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Apply model</button>
-</form>
+
+{% if time > 0 %}
+    <p>Time used: {{ time }} seconds</p>
+{% endif %}
+
 {% endblock %}

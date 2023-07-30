@@ -4,8 +4,19 @@ Home
 {% endblock %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Delete</button>
-</form>
+
+<h2>DELETE FILES</h2>
+
+{% if n_files > 0 %}
+    <p> You can delete all the files you upload and the ones already processed to start from the beggining.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+{% else %}
+    <p> You didn't uploaded any files yet</p>
+{% endif %}
+
+
 {% endblock %}
